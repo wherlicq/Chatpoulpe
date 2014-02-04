@@ -23,13 +23,24 @@ public class Mpg_Location implements Mpg {
         
         this.oMsg = new StcMsg();
         
+        this.oMsg.rqSql = "SELECT * FROM `location`";
+        
         return this.oMsg;
     }
 
     @Override
     public StcMsg getById(StcMsg oMsg) {
-       this.oMsg = new StcMsg();
         
+        Integer id;
+        
+        this.oMsg = new StcMsg();
+        
+        id = (Integer)oMsg.data[0];
+        
+        this.oMsg.rqSql = "SELECT * FROM `location` WHERE `IDLocation` = ?";
+        this.oMsg.data = new Object[1];
+        this.oMsg.data[0] = id;
+       
         return this.oMsg;
     }
 
@@ -54,6 +65,7 @@ public class Mpg_Location implements Mpg {
 
     @Override
     public StcMsg update(StcMsg oMsg) {
+        
        this.oMsg = new StcMsg();
         
         return this.oMsg;
@@ -61,6 +73,7 @@ public class Mpg_Location implements Mpg {
 
     @Override
     public StcMsg deleteById(StcMsg oMsg) {
+        
         this.oMsg = new StcMsg();
         
         return this.oMsg;
