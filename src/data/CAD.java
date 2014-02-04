@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Data;
+package minisig.Data;
 
 import java.sql.*;
 

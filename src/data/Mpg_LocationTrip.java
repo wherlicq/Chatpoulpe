@@ -10,12 +10,6 @@ package minisig.Data;
  *
  * @author Sush
  */
-public interface Mpg {
-    
-    public StcMsg getAll(StcMsg oMsg);
-    public StcMsg getById(StcMsg oMsg);
-    public StcMsg add(StcMsg oMsg);
-    public StcMsg update(StcMsg oMsg);
-    public StcMsg deleteById(StcMsg oMsg);
+public class Mpg_LocationTrip {
     
 }

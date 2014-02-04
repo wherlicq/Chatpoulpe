@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Data;
+package minisig.Data;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 public class Mpg_Location implements Mpg {
 
     private StcMsg oMsg;
-    private ResultSet rs;
 
     @Override
     public StcMsg getAll(StcMsg oMsg) {
@@ -66,7 +65,21 @@ public class Mpg_Location implements Mpg {
     @Override
     public StcMsg update(StcMsg oMsg) {
         
-       this.oMsg = new StcMsg();
+        Integer id;
+        String label;
+        String image;
+        
+        this.oMsg = new StcMsg();
+        
+        id = (Integer)oMsg.data[0];
+        label = (String)oMsg.data[1];
+        image = (String)oMsg.data[2];  
+
+        this.oMsg.rqSql = "UPDATE `location` SET `LabelLocation`= ?,`ImageLocation`= ? WHERE `IDLocation` = ?";
+        this.oMsg.data = new Object[3];
+        this.oMsg.data[0] = id;
+        this.oMsg.data[1] = label;
+        this.oMsg.data[2] = image;
         
         return this.oMsg;
     }
@@ -74,7 +87,15 @@ public class Mpg_Location implements Mpg {
     @Override
     public StcMsg deleteById(StcMsg oMsg) {
         
+        Integer id;
+        
         this.oMsg = new StcMsg();
+        
+        id = (Integer)oMsg.data[0];
+        
+        this.oMsg.rqSql = "DELETE FROM `location` WHERE `IDLocation` = ?";
+        this.oMsg.data = new Object[1];
+        this.oMsg.data[0] = id;
         
         return this.oMsg;
     }
