@@ -68,6 +68,7 @@ public class Mpg_POI implements Mpg {
     @Override
     public StcMsg update(StcMsg oMsg) {
         
+        Integer id;
         String label;
         String text;
         Double x;
@@ -78,14 +79,16 @@ public class Mpg_POI implements Mpg {
         label = (String)oMsg.data[0];
         text = (String)oMsg.data[1];  
         x = (Double)oMsg.data[2];
-        y = (Double)oMsg.data[3];  
+        y = (Double)oMsg.data[3]; 
+        id = (Integer)oMsg.data[4];
 
         this.oMsg.rqSql = "UPDATE `poi` SET `LabelPoi`= ?, `TextPoi`= ?, `CoordinateX`, `CoordinateY` WHERE `IDPoi` = ?";
-        this.oMsg.data = new Object[4];
+        this.oMsg.data = new Object[5];
         this.oMsg.data[0] = label;
         this.oMsg.data[1] = text;
         this.oMsg.data[2] = x;
         this.oMsg.data[3] = y;
+        this.oMsg.data[4] = id;
         
         return this.oMsg;
     }

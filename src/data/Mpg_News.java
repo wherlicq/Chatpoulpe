@@ -70,17 +70,17 @@ public class Mpg_News implements Mpg {
         
         this.oMsg = new StcMsg();
         
-        id = (Integer)oMsg.data[0];
-        label = (String)oMsg.data[1];
-        text = (String)oMsg.data[2];  
-        news = (Boolean)oMsg.data[3];
+        label = (String)oMsg.data[0];
+        text = (String)oMsg.data[1];  
+        news = (Boolean)oMsg.data[2];
+        id = (Integer)oMsg.data[3];
 
         this.oMsg.rqSql = "UPDATE `news` SET `LabelNews`= ?,`TextNews`= ?,`NewNews`= ? WHERE `IDNews` = ?";
-        this.oMsg.data = new Object[3];
-        this.oMsg.data[0] = id;
-        this.oMsg.data[1] = label;
-        this.oMsg.data[2] = text;
-        this.oMsg.data[3] = news;
+        this.oMsg.data = new Object[3]; 
+        this.oMsg.data[0] = label;
+        this.oMsg.data[1] = text;
+        this.oMsg.data[2] = news;
+        this.oMsg.data[3] = id;
         
         return this.oMsg;
     }

@@ -69,15 +69,15 @@ public class Mpg_Trip implements Mpg {
         
         this.oMsg = new StcMsg();
         
-        id = (Integer)oMsg.data[0];
-        label = (String)oMsg.data[1];
-        text = (String)oMsg.data[2];  
+        label = (String)oMsg.data[0];
+        text = (String)oMsg.data[1];
+        id = (Integer)oMsg.data[2];
 
         this.oMsg.rqSql = "UPDATE `trip` SET `LabelTrip`= ?,`TextTrip`= ? WHERE `IDTrip` = ?";
         this.oMsg.data = new Object[3];
-        this.oMsg.data[0] = id;
-        this.oMsg.data[1] = label;
-        this.oMsg.data[2] = text;
+        this.oMsg.data[0] = label;
+        this.oMsg.data[1] = text;
+        this.oMsg.data[2] = id;
         
         return this.oMsg;
     }
