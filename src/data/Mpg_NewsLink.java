@@ -10,6 +10,6 @@ package minisig.Data;
  *
  * @author Sush
  */
-public class Mpg_POILink {
+public class Mpg_NewsLink {
     
 }
