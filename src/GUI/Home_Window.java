@@ -1,6 +1,10 @@
 package GUI;
 
-<<<<<<< HEAD
+/*
+*
+*@author Poulp
+*/
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,9 +18,9 @@ import javax.swing.SwingConstants;
 
 
 
-public class Home_Window{
-	public static void main(String[] args) {
-		JFrame window = new JFrame();
+public class Home_Window extends JFrame{
+	public Home_Window(){
+		
 		JPanel main_panel = new JPanel();
 		JPanel lower_panel = new JPanel();
 		JPanel upper_panel = new JPanel();
@@ -28,7 +32,7 @@ public class Home_Window{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Main_Window fen = new Main_Window();
+				System.out.println("Clic Carte");
 				
 			}
 		});
@@ -53,9 +57,9 @@ public class Home_Window{
 		
 		
 		
-		window.setSize(450, 300);
-		window.setTitle("Proto1");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(450, 300);
+		this.setTitle("Proto1");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		textarea.setLineWrap(true);
 		textarea.setWrapStyleWord(true);
@@ -85,18 +89,12 @@ public class Home_Window{
 		button_panel.add(help_button);
 		button_panel.add(new Box.Filler(minSize, prefSize, maxSize));
 		button_panel.add(exit_button);
-		window.setLayout(new BoxLayout(window.getContentPane(), BoxLayout.X_AXIS));
+		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
 		lower_panel.add(textarea);
 		lower_panel.add(new Box.Filler(minSize, prefSize, maxSize));
 		lower_panel.add(button_panel);
 		
-		window.getContentPane().add(main_panel);
-		display_button.setHorizontalTextPosition(SwingConstants.LEFT);  
-		
-		window.setVisible(true);
+		this.getContentPane().add(main_panel);
+		display_button.setHorizontalTextPosition(SwingConstants.LEFT);
 	}
-=======
-public class Home_Window {
-
->>>>>>> origin/Branche-du-Sush
 }

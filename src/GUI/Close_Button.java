@@ -22,7 +22,7 @@ public class Close_Button extends JButton {
     this.setFont(new Font("arial", Font.BOLD, 12));
     
     try {
-        img = ImageIO.read(new File("bouton_exit.png"));
+        img = ImageIO.read(new File("img/bouton_exit.png"));
       } catch (IOException e) {
         e.printStackTrace();
       }

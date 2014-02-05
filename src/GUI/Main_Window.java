@@ -1,6 +1,5 @@
 package GUI;
 
-<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.TextField;
@@ -39,7 +38,7 @@ public class Main_Window extends JFrame{
 		JTextArea details = new JTextArea();
 			details.setRows(30);
 			details.setColumns(25);
-		JComboBox choice = new JComboBox();
+		JComboBox choice = new JComboBox<String>();
 		//Ajouter les choix
 		TextField search_input = new TextField();
 		JButton search = new JButton("Rechercher");
@@ -98,14 +97,5 @@ public class Main_Window extends JFrame{
 		
 		right_buttons.add(add_trip_point);
 		right_buttons.add(remove_trip_point);
-		
-		
-		
-		this.setVisible(true);
 	}
 }
-=======
-public class Main_Window {
-
-}
->>>>>>> origin/Branche-du-Sush
