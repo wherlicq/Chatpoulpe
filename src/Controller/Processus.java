@@ -29,23 +29,17 @@ public class Processus {
 	private Mpg_TripPOI mpgTripPOI;
 	private Mpg_POILink mpgPOILink;
 	private Mpg_Location mpgLocation;
+	private Mpg_LocationTrip mpgLocationTrip;
 	
 	public Processus() 
 	{
 		this.home = new Home_Window();
 		this.main = new Main_Window();
-		try {
-			this.oCAD = new CAD();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		this.oMsg = new StcMsg();
 		
 		this.mpgPOI = new Mpg_POI();
 		this.mpgTrip = new Mpg_Trip();
-		this.mpgNewsLink = new Mpg_NewsLink();
 		this.mpgLink = new Mpg_LinkHyperText();
 		this.mpgLocationPOI = new Mpg_LocationPOI();
 		this.mpgImage = new Mpg_Image();
@@ -54,31 +48,69 @@ public class Processus {
 		this.mpgTripPOI = new Mpg_TripPOI();
 		this.mpgPOILink = new Mpg_POILink();
 		this.mpgLocation = new Mpg_Location();
+		this.mpgLocationTrip = new Mpg_LocationTrip();
 		
 	}
 	
-	public StcMsg addPOI(StcMsg oMsg)
+	// POI ----------------------------------------------------------------------------------------------------------------------------
+	public StcMsg addPOI(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
+		this.oMsg = this.mpgPOI.add(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	public StcMsg updatePOI(StcMsg oMsg)
 	{
+		this.oMsg = this.mpgPOI.update(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	public StcMsg deletePOI(StcMsg oMsg)
 	{
+		this.oMsg = this.mpgPOI.deleteById(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
+		this.mpgTripPOI.deleteByIdPOI(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
+		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
-	public StcMsg adTrip(StcMsg oMsg)
+	
+	// Trip --------------------------------------------------------------------------------------------------------------------------
+	public StcMsg addTrip(StcMsg oMsg)
 	{
+		this.oMsg = this.mpgTrip.add(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	public StcMsg updateTrip(StcMsg oMsg)
 	{
+		this.oMsg = this.mpgTrip.update(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	public StcMsg deleteTrip(StcMsg oMsg)
 	{
+		this.oMsg = this.mpgTrip.deleteById(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
+		this.oMsg = this.mpgLocationTrip.deleteByIdTrip;
+		this.oCAD = new CAD();
+		this.oMsg  = this.oCAD.execQuery(oMsg);
+		
+		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	
@@ -119,7 +151,13 @@ public class Processus {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.oMsg = this.loadLocation(oMsg);
+		
+		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
+		for (int i = 0; i < this.oMsg.data.length; i++)
+		{
+			this.deletePOI(this.oMsg.data[i]);
+		}
+		
 		return oMsg;
 	}
 	// ----------------------------------------------------------------------------------------------------------------------------
