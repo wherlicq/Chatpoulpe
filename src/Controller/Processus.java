@@ -162,8 +162,15 @@ public class Processus {
 	}
 	// ----------------------------------------------------------------------------------------------------------------------------
 	
-	public StcMsg loadLocation(StcMsg oMsg)
+	public StcMsg loadLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
+		this.oCAD = new CAD();
+		this.oMsg = this.mpgLocation.getById(oMsg);
+		this.oCAD.execQuery(this.oMsg);
+		this.loc = new Location(oMsg);
+		
+		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
+		this.oCAD.execQuery(this.oMsg);
 		return oMsg;
 	}
 	public StcMsg loadNews(StcMsg oMsg)
