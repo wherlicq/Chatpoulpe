@@ -1,4 +1,4 @@
-package Controller;
+package minisig.Controller;
 
 import java.util.ArrayList;
 

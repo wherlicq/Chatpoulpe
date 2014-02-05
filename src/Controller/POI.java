@@ -1,4 +1,4 @@
-package Controller;
+package minisig.Controller;
 
 public class POI {
 	private int id;

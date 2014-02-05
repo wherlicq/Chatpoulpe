@@ -1,4 +1,4 @@
-package Controller;
+package minisig.Controller;
 
 public class Location {
 	private int id;

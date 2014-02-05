@@ -1,8 +1,8 @@
-package Controller;
+package minisig.Controller;
 import java.sql.SQLException;
 
-import GUI.*;
-import Data.*;
+import minisig.GUI.*;
+import minisig.Data.*;
 
 /*
  *

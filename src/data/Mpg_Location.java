@@ -52,8 +52,9 @@ public class Mpg_Location implements Mpg {
         this.oMsg = new StcMsg();
         
         label = (String)oMsg.data[0];
-        image = (String)oMsg.data[1];  
-
+        image = (String)oMsg.data[1];
+        
+        
         this.oMsg.rqSql = "INSERT INTO `location`(`LabelLocation`, `ImageLocation`) VALUES (?,?)";
         this.oMsg.data = new Object[2];
         this.oMsg.data[0] = label;
