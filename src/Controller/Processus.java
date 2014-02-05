@@ -1,4 +1,5 @@
 package Controller;
+<<<<<<< HEAD
 import java.sql.SQLException;
 
 import GUI.*;
@@ -9,6 +10,30 @@ import Data.*;
  *@author Will 
  */
 
+=======
+import GUI.Main_Window;
+import GUI.Home_Window;
+import Data.Mpg_TripPOI;
+import Data.Mpg_LocationPOI;
+import Data.StcMsg;
+import Data.Mpg_POILink;
+import Data.Mpg_News;
+import Data.Mpg_Trip;
+import Data.Mpg_LinkHyperText;
+import Data.Mpg_NewsImage;
+import Data.Mpg_Location;
+import Data.CAD;
+import Data.Mpg_POI;
+import Data.Mpg_Image;
+import java.sql.SQLException;
+
+
+/*
+ *
+ *@author Will 
+ */
+
+>>>>>>> origin/Branche-du-Sush
 public class Processus {
 	private Home_Window home;
 	private Main_Window main;
@@ -20,7 +45,10 @@ public class Processus {
 	private StcMsg oMsg;
 	private Mpg_POI mpgPOI;
 	private Mpg_Trip mpgTrip;
+<<<<<<< HEAD
 	private Mpg_NewsLink mpgNewsLink;
+=======
+>>>>>>> origin/Branche-du-Sush
 	private Mpg_LinkHyperText mpgLink;
 	private Mpg_LocationPOI mpgLocationPOI;
 	private Mpg_Image mpgImage;
@@ -29,12 +57,24 @@ public class Processus {
 	private Mpg_TripPOI mpgTripPOI;
 	private Mpg_POILink mpgPOILink;
 	private Mpg_Location mpgLocation;
+<<<<<<< HEAD
 	private Mpg_LocationTrip mpgLocationTrip;
+=======
+>>>>>>> origin/Branche-du-Sush
 	
 	public Processus() 
 	{
 		this.home = new Home_Window();
 		this.main = new Main_Window();
+<<<<<<< HEAD
+=======
+		try {
+			this.oCAD = new CAD();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+>>>>>>> origin/Branche-du-Sush
 		
 		this.oMsg = new StcMsg();
 		
@@ -48,6 +88,7 @@ public class Processus {
 		this.mpgTripPOI = new Mpg_TripPOI();
 		this.mpgPOILink = new Mpg_POILink();
 		this.mpgLocation = new Mpg_Location();
+<<<<<<< HEAD
 		this.mpgLocationTrip = new Mpg_LocationTrip();
 		
 	}
@@ -67,10 +108,22 @@ public class Processus {
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
 		this.oMsg = this.loadLocation(oMsg);
+=======
+		
+	}
+	
+	public StcMsg addPOI(StcMsg oMsg)
+	{
+		return oMsg;
+	}
+	public StcMsg updatePOI(StcMsg oMsg)
+	{
+>>>>>>> origin/Branche-du-Sush
 		return oMsg;
 	}
 	public StcMsg deletePOI(StcMsg oMsg)
 	{
+<<<<<<< HEAD
 		this.oMsg = this.mpgPOI.deleteById(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
@@ -90,18 +143,28 @@ public class Processus {
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
 		this.oMsg = this.loadLocation(oMsg);
+=======
+		return oMsg;
+	}
+	public StcMsg adTrip(StcMsg oMsg)
+	{
+>>>>>>> origin/Branche-du-Sush
 		return oMsg;
 	}
 	public StcMsg updateTrip(StcMsg oMsg)
 	{
+<<<<<<< HEAD
 		this.oMsg = this.mpgTrip.update(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
 		this.oMsg = this.loadLocation(oMsg);
+=======
+>>>>>>> origin/Branche-du-Sush
 		return oMsg;
 	}
 	public StcMsg deleteTrip(StcMsg oMsg)
 	{
+<<<<<<< HEAD
 		this.oMsg = this.mpgTrip.deleteById(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
@@ -111,6 +174,8 @@ public class Processus {
 		this.oMsg  = this.oCAD.execQuery(oMsg);
 		
 		this.oMsg = this.loadLocation(oMsg);
+=======
+>>>>>>> origin/Branche-du-Sush
 		return oMsg;
 	}
 	
@@ -151,6 +216,7 @@ public class Processus {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		
 		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
 		for (int i = 0; i < this.oMsg.data.length; i++)
@@ -158,10 +224,14 @@ public class Processus {
 			this.deletePOI(this.oMsg.data[i]);
 		}
 		
+=======
+		this.oMsg = this.loadLocation(oMsg);
+>>>>>>> origin/Branche-du-Sush
 		return oMsg;
 	}
 	// ----------------------------------------------------------------------------------------------------------------------------
 	
+<<<<<<< HEAD
 	public StcMsg loadLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oCAD = new CAD();
@@ -171,6 +241,10 @@ public class Processus {
 		
 		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
 		this.oCAD.execQuery(this.oMsg);
+=======
+	public StcMsg loadLocation(StcMsg oMsg)
+	{
+>>>>>>> origin/Branche-du-Sush
 		return oMsg;
 	}
 	public StcMsg loadNews(StcMsg oMsg)

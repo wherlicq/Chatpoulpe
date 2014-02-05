@@ -5,9 +5,12 @@
  */
 
 package Data;
+<<<<<<< HEAD
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+>>>>>>> origin/Branche-du-Sush
 
 /**
  *
@@ -72,15 +75,15 @@ public class Mpg_Location implements Mpg {
         
         this.oMsg = new StcMsg();
         
-        id = (Integer)oMsg.data[0];
-        label = (String)oMsg.data[1];
-        image = (String)oMsg.data[2];  
+        label = (String)oMsg.data[0];
+        image = (String)oMsg.data[1];  
+        id = (Integer)oMsg.data[2];
 
         this.oMsg.rqSql = "UPDATE `location` SET `LabelLocation`= ?,`ImageLocation`= ? WHERE `IDLocation` = ?";
         this.oMsg.data = new Object[3];
-        this.oMsg.data[0] = id;
-        this.oMsg.data[1] = label;
-        this.oMsg.data[2] = image;
+        this.oMsg.data[0] = label;
+        this.oMsg.data[1] = image;
+        this.oMsg.data[2] = id;
         
         return this.oMsg;
     }

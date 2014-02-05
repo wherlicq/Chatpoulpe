@@ -1,5 +1,6 @@
 package GUI;
 
+<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.TextField;
@@ -103,3 +104,8 @@ public class Main_Window extends JFrame{
 		this.setVisible(true);
 	}
 }
+=======
+public class Main_Window {
+
+}
+>>>>>>> origin/Branche-du-Sush

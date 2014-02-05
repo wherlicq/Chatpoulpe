@@ -1,5 +1,6 @@
 package GUI;
 
+<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -94,4 +95,8 @@ public class Home_Window{
 		
 		window.setVisible(true);
 	}
+=======
+public class Home_Window {
+
+>>>>>>> origin/Branche-du-Sush
 }

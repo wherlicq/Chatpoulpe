@@ -1,10 +1,17 @@
 package miniSIG;
 
+<<<<<<< HEAD
 import Controller.*;
 import Data.*;
 
 public class Sig {
 private static Processus oP = new Processus();
+=======
+import Data.StcMsg;
+
+public class Sig {
+private static Controller.Processus oP = new Controller.Processus();
+>>>>>>> origin/Branche-du-Sush
 private static StcMsg oMsg = new StcMsg();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
