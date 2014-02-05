@@ -68,13 +68,13 @@ public class Processus {
 		return this.oMsg;
 	}
 	
-	public StcMsg deletePOI(StcMsg oMsg)
+	public StcMsg deletePOI(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgPOI.deleteById(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
 		
-		this.mpgTripPOI.deleteByIdPOI(oMsg);
+		this.mpgTripPOI.deleteById(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
 		
@@ -137,7 +137,7 @@ public class Processus {
 		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
-	public StcMsg deleteLocation(StcMsg oMsg)
+	public StcMsg deleteLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgLocation.deleteById(oMsg);
 		try {

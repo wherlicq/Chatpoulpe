@@ -40,6 +40,21 @@ public class Mpg_LocationPOI implements Mpg {
         return this.oMsg;
     }
     
+    public StcMsg getByIdLocation(StcMsg oMsg) {
+        
+        Integer id;
+        
+        this.oMsg = new StcMsg();
+        
+        id = (Integer)oMsg.data[0];
+        
+        this.oMsg.rqSql = "SELECT * FROM `locationpoi` WHERE `IDLocation` = ?";
+        this.oMsg.data = new Object[1];
+        this.oMsg.data[0] = id;
+       
+        return this.oMsg;
+    }
+    
     public StcMsg getByIdPoi(StcMsg oMsg) {
         
         Integer id;
