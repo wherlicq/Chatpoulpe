@@ -10,6 +10,6 @@ package Data;
  *
  * @author Sush
  */
-public class Mpg_LinkHyperText {
+public class Mpg_LocationTrip {
     
 }

@@ -39,7 +39,30 @@ public class CAD {
     public StcMsg execQuery(StcMsg oMsg) throws SQLException
     {
         
-        if(oMsg.rqSql.regionMatches(0, "SELECT", 6, 0))
+        if(oMsg.rqSql.regionMatches(0, "SELECT", 7, 0))
+        {
+            try (PreparedStatement prepare = conn.prepareStatement(oMsg.rqSql))
+            {   
+                for(int i = 0; i < oMsg.data.length; i++)
+                {
+                    if(oMsg.data[i] instanceof String)
+                    {
+                        prepare.setString(i+1, (String)oMsg.data[i]);
+                    }
+                    else if(oMsg.data[i] instanceof Integer)
+                    {
+                        prepare.setInt(i+1, (Integer)oMsg.data[i]);
+                    }
+                    else if(oMsg.data[i] instanceof Boolean)
+                    {
+                        prepare.setBoolean(i+1, (Boolean)oMsg.data[i]);
+                    }
+                }
+                
+                prepare.executeUpdate();
+            }
+        }
+        else
         {
             try (PreparedStatement prepare = conn.prepareStatement(oMsg.rqSql))
             {   
@@ -68,29 +91,6 @@ public class CAD {
                         i++;
                     }
                 }
-            }
-        }
-        else
-        {
-            try (PreparedStatement prepare = conn.prepareStatement(oMsg.rqSql)) 
-            {   
-                for(int i = 0; i < oMsg.data.length; i++)
-                {
-                    if(oMsg.data[i] instanceof String)
-                    {
-                        prepare.setString(i+1, (String)oMsg.data[i]);
-                    }
-                    else if(oMsg.data[i] instanceof Integer)
-                    {
-                        prepare.setInt(i+1, (Integer)oMsg.data[i]);
-                    }
-                    else if(oMsg.data[i] instanceof Boolean)
-                    {
-                        prepare.setBoolean(i+1, (Boolean)oMsg.data[i]);
-                    }
-                }
-                
-                prepare.executeUpdate();
             }
         }
         
