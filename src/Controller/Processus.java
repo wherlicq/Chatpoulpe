@@ -1,8 +1,8 @@
-package minisig.Controller;
+package Controller;
 import java.sql.SQLException;
 
-import minisig.GUI.*;
-import minisig.Data.*;
+import GUI.*;
+import Data.*;
 
 /*
  *
@@ -61,7 +61,7 @@ public class Processus {
 		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
-	public StcMsg updatePOI(StcMsg oMsg)
+	public StcMsg updatePOI(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgPOI.update(oMsg);
 		this.oCAD = new CAD();

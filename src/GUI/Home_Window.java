@@ -1,4 +1,4 @@
-package minisig.GUI;
+package GUI;
 
 public class Home_Window {
 

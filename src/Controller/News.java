@@ -1,4 +1,4 @@
-package minisig.Controller;
+package Controller;
 
 public class News {
 	private int id;

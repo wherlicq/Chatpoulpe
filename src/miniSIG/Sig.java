@@ -1,10 +1,10 @@
-package minisig.miniSIG;
+package miniSIG;
 
-import minisig.Controller.*;
-import minisig.Data.*;
+import Controller.*;
+import Data.*;
 
 public class Sig {
-private static minisig.Controller.Processus oP = new minisig.Controller.Processus();
+private static Processus oP = new Processus();
 private static StcMsg oMsg = new StcMsg();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
