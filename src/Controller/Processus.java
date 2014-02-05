@@ -65,6 +65,7 @@ public class Processus {
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
 		this.oMsg = this.loadLocation(oMsg);
+		return this.oMsg;
 	}
 	
 	public StcMsg deletePOI(StcMsg oMsg)
@@ -82,7 +83,7 @@ public class Processus {
 	}
 	
 	// Trip --------------------------------------------------------------------------------------------------------------------------
-	public StcMsg addTrip(StcMsg oMsg)
+	public StcMsg addTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgTrip.add(oMsg);
 		this.oCAD = new CAD();
@@ -90,7 +91,7 @@ public class Processus {
 		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
-	public StcMsg updateTrip(StcMsg oMsg)
+	public StcMsg updateTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgTrip.update(oMsg);
 		this.oCAD = new CAD();
@@ -98,7 +99,7 @@ public class Processus {
 		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
-	public StcMsg deleteTrip(StcMsg oMsg)
+	public StcMsg deleteTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgTrip.deleteById(oMsg);
 		this.oCAD = new CAD();
@@ -110,7 +111,7 @@ public class Processus {
 	}
 	
 	// Location -------------------------------------------------------------------------------------------------------------------
-	public StcMsg addLocation(StcMsg oMsg)
+	public StcMsg addLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgLocation.add(oMsg);
 		try {
@@ -123,7 +124,7 @@ public class Processus {
 		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
-	public StcMsg updateLocation(StcMsg oMsg)
+	public StcMsg updateLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgLocation.update(oMsg);
 		try {
