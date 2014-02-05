@@ -12,4 +12,5 @@ package Data;
  */
 public class Mpg_LocationTrip {
     
+    
 }
