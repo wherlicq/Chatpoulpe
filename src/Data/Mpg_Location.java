@@ -5,12 +5,6 @@
  */
 
 package Data;
-<<<<<<< HEAD
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-=======
->>>>>>> origin/Branche-du-Sush
 
 /**
  *
