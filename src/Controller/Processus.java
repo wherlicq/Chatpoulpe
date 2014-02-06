@@ -12,8 +12,6 @@ import Data.*;
  */
 
 public class Processus {
-	private Home_Window home;
-	private Main_Window main;
 	private CAD oCAD;
 	private Location loc;
 	private Trip[] trip;
@@ -33,8 +31,6 @@ public class Processus {
 	
 	public Processus() 
 	{
-		this.home = new Home_Window();
-		this.main = new Main_Window();
 		
 		this.oMsg = new StcMsg();
 		

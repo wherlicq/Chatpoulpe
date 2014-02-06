@@ -1,8 +1,11 @@
 package GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,6 +17,8 @@ import javax.swing.JTextArea;
 
 
 public class Main_Window extends JFrame{
+	private boolean edition = false;
+	
 	public Main_Window() {
 		this.setSize(900, 700);
 		this.setTitle("Carte");
@@ -23,7 +28,10 @@ public class Main_Window extends JFrame{
 		Dimension maxSize = new Dimension(Short.MAX_VALUE, 30);
 		
 		JPanel main_panel = new JPanel();
+		JPanel upper_panel = new JPanel();
 		JPanel search_panel = new JPanel();
+		JPanel navigate = new JPanel();
+		JPanel mode_switch_panel = new JPanel();
 		JPanel content = new JPanel();
 		JPanel left = new JPanel();
 		JPanel mid = new JPanel();
@@ -39,17 +47,22 @@ public class Main_Window extends JFrame{
 			details.setRows(30);
 			details.setColumns(25);
 		JComboBox choice = new JComboBox<String>();
-		//Ajouter les choix
+		choice.setPreferredSize(new Dimension(100, 25));
+	    choice.addItem("POI");
+	    choice.addItem("Lieu");
+	    choice.addItem("Parcours");
 		TextField search_input = new TextField();
+		search_input.setPreferredSize(new Dimension(100, 25));
 		JButton search = new JButton("Rechercher");
-		JButton mode_switch = new JButton("Edition");
+		final JButton mode_switch = new JButton("Edition");
 		
-		JButton modify_details = new JButton("Modifier details");
-		JButton delete_point = new JButton("Supprimer point");
-		JButton create_point = new JButton("Créer point");
-		JButton move_point = new JButton("Déplacer point");
-		JButton add_trip_point = new JButton("Ajouter point");
-		JButton remove_trip_point = new JButton("Retirer point");
+		
+		final JButton modify_details = new JButton("Modifier details");
+		final JButton delete_point = new JButton("Supprimer point");
+		final JButton create_point = new JButton("Créer point");
+		final JButton move_point = new JButton("Déplacer point");
+		final JButton add_trip_point = new JButton("Ajouter point");
+		final JButton remove_trip_point = new JButton("Retirer point");
 		
 		JButton previous = new JButton("Précédent");
 		JButton next = new JButton("Suivant");
@@ -57,7 +70,7 @@ public class Main_Window extends JFrame{
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
 		this.getContentPane().add(main_panel);
 		main_panel.setLayout(new BoxLayout(main_panel, BoxLayout.Y_AXIS));
-		main_panel.add(search_panel);
+		main_panel.add(upper_panel);
 		main_panel.add(content);
 		content.setLayout(new BoxLayout(content, BoxLayout.X_AXIS));
 		content.add(left);
@@ -81,12 +94,16 @@ public class Main_Window extends JFrame{
 		right_buttons.setLayout(new BoxLayout(right_buttons, BoxLayout.X_AXIS));
 		
 		
-		search_panel.add(previous);
-		search_panel.add(next);
+		upper_panel.setLayout(new BorderLayout());
+		upper_panel.add(navigate, BorderLayout.WEST);
+		upper_panel.add(search_panel, BorderLayout.CENTER);
+		upper_panel.add(mode_switch_panel, BorderLayout.EAST);
+		navigate.add(previous);
+		navigate.add(next);
 		search_panel.add(choice);
 		search_panel.add(search_input);
 		search_panel.add(search);
-		search_panel.add(mode_switch);
+		mode_switch_panel.add(mode_switch);
 		
 		left_content.add(details);
 		left_buttons.add(modify_details);
@@ -97,5 +114,39 @@ public class Main_Window extends JFrame{
 		
 		right_buttons.add(add_trip_point);
 		right_buttons.add(remove_trip_point);
+		
+		modify_details.setEnabled(false);
+		delete_point.setEnabled(false);
+		create_point.setEnabled(false);
+		move_point.setEnabled(false);
+		add_trip_point.setEnabled(false);
+		remove_trip_point.setEnabled(false);
+		
+		mode_switch.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(edition == false){
+					modify_details.setEnabled(true);
+					delete_point.setEnabled(true);
+					create_point.setEnabled(true);
+					move_point.setEnabled(true);
+					add_trip_point.setEnabled(true);
+					remove_trip_point.setEnabled(true);
+					
+					edition = true;
+				} else {
+					modify_details.setEnabled(false);
+					delete_point.setEnabled(false);
+					create_point.setEnabled(false);
+					move_point.setEnabled(false);
+					add_trip_point.setEnabled(false);
+					remove_trip_point.setEnabled(false);
+					
+					edition = false;
+				}
+				
+			}
+		});
 	}
 }

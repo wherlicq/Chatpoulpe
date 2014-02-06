@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,7 +28,7 @@ public class Home_Window extends JFrame{
 		JPanel button_panel = new JPanel();
 		JLabel news = new JLabel("Chatpoulpe");
 		final JTextArea textarea = new JTextArea();
-		Display_Button display_button = new Display_Button("Carte");
+		JButton display_button = new JButton("Carte");
 		display_button.addActionListener(new ActionListener() {
 			
 			@Override
@@ -36,7 +37,7 @@ public class Home_Window extends JFrame{
 				
 			}
 		});
-		Help_Button help_button = new Help_Button("Aide");
+		JButton help_button = new JButton("Aide");
 		help_button.addActionListener(new ActionListener() {
 			
 			@Override
@@ -45,7 +46,7 @@ public class Home_Window extends JFrame{
 				
 			}
 		});
-		Close_Button exit_button = new Close_Button("Quitter");
+		JButton exit_button = new JButton("Quitter");
 		exit_button.addActionListener(new ActionListener() {
 			
 			@Override
