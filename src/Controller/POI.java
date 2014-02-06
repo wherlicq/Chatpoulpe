@@ -4,20 +4,19 @@ public class POI {
 	private Integer id;
 	private String label;
 	private String text;
-	private Integer x;
-	private Integer y;
+	private Double x;
+	private Double y;
 	private String[] link;
 	private String img;
 	private Trip[] trip;
 
-	public POI(Integer id, String label, String text, Integer x, Integer y, String img)
+	public POI(Integer id, String label, String text, Double x, Double y)
 	{
 		this.id = id;
 		this.label = label;
 		this.text = text;
 		this.x = x;
 		this.y = y;
-		this.img = img;
 	}
 	
 	public POI(Data.StcMsg oMsg)
@@ -25,8 +24,8 @@ public class POI {
 		this.id = (Integer)oMsg.data[0];
 		this.label = (String)oMsg.data[1];
 		this.text = (String)oMsg.data[2];
-		this.x = (Integer)oMsg.data[3];
-		this.y = (Integer)oMsg.data[4];
+		this.x = (Double)oMsg.data[3];
+		this.y = (Double)oMsg.data[4];
 		this.img = (String)oMsg.data[5];
 	}
 }

@@ -167,36 +167,33 @@ public class Processus {
 		
 		this.oCAD = new CAD();
 		
-		//Integer[] POItab;
-		
-		ResultSet tmp;
+		POI[] POItab;
+		int nbPOI;
 		
 		
 		Loc = this.mpgLocation.getById(Loc);
 		Loc = this.oCAD.execQuery(Loc);
-		tmp = (ResultSet)LocPOI.data[0];
-		
-		
-		
-		/*
-		LocPOI = this.mpgLocationPOI.getByIdLocation(LocPOI);
+		this.oCAD = new CAD();
+		LocPOI = this.mpgLocationPOI.getById(LocPOI);
 		LocPOI = this.oCAD.execQuery(LocPOI);
-		tmp = (ResultSet)LocPOI.data[0];
-			*/	
-		/*
-		POItab = new Integer[tmp.length];
 		
-				int i = 0;
-				while(tmp.next()){
-					POItab[i] = tmp.getInt("idPOI");
-				}
-			*/	
-				
-				
-				
+		nbPOI = (Integer)LocPOI.selectedData.length;
+		POItab = new POI[nbPOI];
+		POI.data = new Object[nbPOI];
+		for(int i = 0; i < nbPOI; i++)
+		{
+			POI.data[0] = LocPOI.selectedData[i][1];
+			this.oCAD = new CAD();
+			POI = this.mpgPOI.getById(POI);
+			POI = this.oCAD.execQuery(POI);
+			POItab[i] = new POI((Integer)POI.selectedData[0][0], (String)POI.selectedData[0][1], (String)POI.selectedData[0][2], (Double)POI.selectedData[0][3], (Double)POI.selectedData[0][4]);
+		}
+		
+		this.loc = new Location((Integer)Loc.selectedData[0][0], (String)Loc.selectedData[0][1], (String)Loc.selectedData[0][2], POItab);
 		
 		return oMsg;
 	}
+	
 	public StcMsg loadNews(StcMsg oMsg)
 	{
 		return oMsg;

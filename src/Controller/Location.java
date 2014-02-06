@@ -4,17 +4,15 @@ import java.lang.reflect.Array;
 
 public class Location {
 	private Integer id;
+	private String label;
 	private String img;
 	private POI[] poi;
 	
-	public Location(Integer id, String img, Data.StcMsg POI)
+	public Location(Integer id, String label, String img, POI[] POItab)
 	{
-		this.id = (Integer)id;
-		this.img = (String)img;
-		this.poi = new POI[POI.data.length];
-		for (int i = 0; i < POI.data.length; i++)
-		{
-			this.poi[i] = new POI((Data.StcMsg)POI.data[i]);
-		}
+		this.id = id;
+		this.label = label;
+		this.img = img;
+		this.poi = POItab;
 	}
 }

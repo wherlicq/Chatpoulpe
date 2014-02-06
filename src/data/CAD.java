@@ -39,7 +39,7 @@ public class CAD {
     public StcMsg execQuery(StcMsg oMsg) throws SQLException
     {
         
-        if(oMsg.rqSql.regionMatches(0, "SELECT", 7, 0))
+        if(oMsg.rqSql.regionMatches(0, "SELECT", 6, 0))
         {
             try (PreparedStatement prepare = conn.prepareStatement(oMsg.rqSql))
             {   
@@ -59,12 +59,20 @@ public class CAD {
                     }
                 }
                 
-                try(ResultSet rs = prepare.executeQuery(oMsg.rqSql))
+                try(ResultSet rs = prepare.executeQuery())
                 {
+                	ResultSetMetaData metaData = rs.getMetaData();
+                	rs.last();
+                    this.oMsg.selectedData = new Object[rs.getRow()][metaData.getColumnCount()];
+                	rs.beforeFirst();
                     int i = 0;
+                    
                     while(rs.next())
                     {
-                        this.oMsg.data[i] = (Object)rs;
+                    	for(int j = 0; j < metaData.getColumnCount(); j++)
+                    	{
+                            this.oMsg.selectedData[i][j] = (Object)rs.getObject(j+1);
+                    	}
                         i++;
                     }
                 }

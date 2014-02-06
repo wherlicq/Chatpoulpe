@@ -13,4 +13,5 @@ package Data;
 public class StcMsg {
     public Object[] data;
     public String rqSql;
+    public Object[][] selectedData;
 }
