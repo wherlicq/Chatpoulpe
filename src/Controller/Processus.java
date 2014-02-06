@@ -1,5 +1,6 @@
 package Controller;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import GUI.*;
@@ -160,13 +161,39 @@ public class Processus {
 	
 	public StcMsg loadLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
-		this.oCAD = new CAD();
-		this.oMsg = this.mpgLocation.getById(oMsg);
-		this.oCAD.execQuery(this.oMsg);
-		this.loc = new Location(oMsg);
+		StcMsg Loc = oMsg;
+		StcMsg LocPOI = oMsg;
+		StcMsg POI = new StcMsg();
 		
-		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
-		this.oCAD.execQuery(this.oMsg);
+		this.oCAD = new CAD();
+		
+		//Integer[] POItab;
+		
+		ResultSet tmp;
+		
+		
+		Loc = this.mpgLocation.getById(Loc);
+		Loc = this.oCAD.execQuery(Loc);
+		tmp = (ResultSet)LocPOI.data[0];
+		
+		
+		
+		/*
+		LocPOI = this.mpgLocationPOI.getByIdLocation(LocPOI);
+		LocPOI = this.oCAD.execQuery(LocPOI);
+		tmp = (ResultSet)LocPOI.data[0];
+			*/	
+		/*
+		POItab = new Integer[tmp.length];
+		
+				int i = 0;
+				while(tmp.next()){
+					POItab[i] = tmp.getInt("idPOI");
+				}
+			*/	
+				
+				
+				
 		
 		return oMsg;
 	}

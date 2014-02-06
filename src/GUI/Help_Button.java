@@ -22,7 +22,7 @@ public class Help_Button extends JButton {
     this.setFont(new Font("arial", Font.BOLD, 12));
     
     try {
-        img = ImageIO.read(new File("bouton_help.png"));
+        img = ImageIO.read(new File("bin/GUI/img/bouton_help.png"));
       } catch (IOException e) {
         e.printStackTrace();
       }

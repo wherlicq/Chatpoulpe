@@ -59,7 +59,15 @@ public class CAD {
                     }
                 }
                 
-                prepare.executeUpdate();
+                try(ResultSet rs = prepare.executeQuery(oMsg.rqSql))
+                {
+                    int i = 0;
+                    while(rs.next())
+                    {
+                        this.oMsg.data[i] = (Object)rs;
+                        i++;
+                    }
+                }
             }
         }
         else
@@ -82,15 +90,7 @@ public class CAD {
                     }
                 }
                 
-                try(ResultSet rs = prepare.executeQuery(oMsg.rqSql))
-                {
-                    int i = 0;
-                    while(rs.next())
-                    {
-                        this.oMsg.data[i] = (Object)rs;
-                        i++;
-                    }
-                }
+                prepare.executeUpdate();
             }
         }
         
