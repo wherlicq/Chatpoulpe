@@ -39,7 +39,7 @@ public class CAD {
     public StcMsg execQuery(StcMsg oMsg) throws SQLException
     {
         
-        if(oMsg.rqSql.regionMatches(0, "SELECT", 6, 0))
+        if(oMsg.rqSql.startsWith("SELECT"))
         {
             try (PreparedStatement prepare = conn.prepareStatement(oMsg.rqSql))
             {   
