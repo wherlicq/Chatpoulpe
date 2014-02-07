@@ -29,4 +29,77 @@ public class Prcs_View {
             
             return this.oMsg;
         }
+        
+        public StcMsg initializeLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            StcMsg oMsga = new StcMsg();
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.loadLocation(oMsg);
+            
+            return this.oMsg;
+        }
+        
+        public void addLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.addLocation(oMsg);
+        }
+        
+        public void updateLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.updateLocation(oMsg);
+        }
+        
+        public void deleteLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.deleteLocation(oMsg);
+        }
+        
+        public void addPoi(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.addPOI(oMsg);
+        }
+        
+        public void updatePoi(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.updatePOI(oMsg);
+        }
+        
+        public void deletePoi(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.deletePOI(oMsg);
+        }
+        
+        public void addTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.addTrip(oMsg);
+        }
+        
+        public void updateTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.updateTrip(oMsg);
+        }
+        
+        public void deleteTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        {
+            this.oMsg = new StcMsg();
+            this.oP = new Processus();
+            this.oMsg = this.oP.deleteTrip(oMsg);
+        }
 }

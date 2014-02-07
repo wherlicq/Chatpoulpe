@@ -1,11 +1,14 @@
 package GUI;
 
+import Controller.Prcs_View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -18,8 +21,11 @@ import javax.swing.JTextArea;
 
 public class Main_Window extends JFrame{
 	private boolean edition = false;
+        Prcs_View oPv;
 	
-	public Main_Window() {
+	public Main_Window(Prcs_View oPv) {
+            
+            this.oPv = oPv;
 		this.setSize(900, 700);
 		this.setTitle("Carte");
 		
@@ -67,6 +73,32 @@ public class Main_Window extends JFrame{
 		JButton previous = new JButton("Précédent");
 		JButton next = new JButton("Suivant");
 		
+                create_point.addMouseListener(new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+               
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+               
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+            }
+        });
+                
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
 		this.getContentPane().add(main_panel);
 		main_panel.setLayout(new BoxLayout(main_panel, BoxLayout.Y_AXIS));

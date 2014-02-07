@@ -44,8 +44,7 @@ public class Home_Window extends JFrame{
                     textarea.append((String)this.oMsg.selectedData[i][1] + "\n");
                     textarea.append((String)this.oMsg.selectedData[i][2] + "\n");
                     textarea.append("\n");
-                }
-                
+                }        
                 
 		JButton display_button = new JButton("Carte");
 		display_button.addActionListener(new ActionListener() {
