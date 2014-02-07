@@ -1,9 +1,7 @@
 package Controller;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import GUI.*;
 import Data.*;
 
 /*
@@ -243,7 +241,7 @@ public class Processus {
 				Triptab[i] = new Trip((Integer)Trip.selectedData[0][0], (String)Trip.selectedData[0][1], this.loc, tmpPOI);
 			}
 		}
-		this.trip = Triptab;
+		this.setTrip(Triptab);
 				
 		return oMsg;
 	}
@@ -255,5 +253,44 @@ public class Processus {
 		this.oCAD = new CAD();
 		News = this.oCAD.execQuery(News);
 		return News;
+	}
+
+	public Trip[] getTrip() {
+		return trip;
+	}
+
+	public void setTrip(Trip[] trip) {
+		this.trip = trip;
+	}
+
+	public Location getLoc() {
+		return loc;
+	}
+
+	public void setPoi(POI[] poi) {
+		this.poi = poi;
+	}
+	public POI[] getPoi() {
+		return this.poi;
+	}
+
+	public void setLoc(Location loc) {
+		this.loc = loc;
+	}
+
+	public News[] getNews() {
+		return news;
+	}
+
+	public void setNews(News[] news) {
+		this.news = news;
+	}
+
+	public History getHistory() {
+		return history;
+	}
+
+	public void setHistory(History history) {
+		this.history = history;
 	}
 }
