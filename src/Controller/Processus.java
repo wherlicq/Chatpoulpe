@@ -136,17 +136,20 @@ public class Processus {
 	public StcMsg deleteLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgLocation.deleteById(oMsg);
-		try {
-			this.oCAD = new CAD();
-			this.oMsg = this.oCAD.execQuery(this.oMsg);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+
 		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
-		for (int i = 0; i < this.oMsg.data.length; i++)
+		for (int i = 0; i < this.oMsg.selectedData.length; i++)
 		{
+			this.oMsg.data[0] = this.oMsg.selectedData[i][0];
+			this.deletePOI(this.oMsg);
+		}
+
+		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
+		for (int i = 0; i < this.oMsg.selectedData.length; i++)
+		{
+			this.oMsg.data[0] = this.oMsg.selectedData[i][0];
 			this.deletePOI(this.oMsg);
 		}
 		
