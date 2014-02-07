@@ -229,8 +229,12 @@ public class Processus {
 		return oMsg;
 	}
 	
-	public StcMsg loadNews(StcMsg oMsg)
+	public StcMsg loadNews(StcMsg oMsg) throws SQLException, ClassNotFoundException
 	{
-		return oMsg;
+		StcMsg News = new StcMsg(); 
+		News = this.mpgNews.getByNew(News);
+		this.oCAD = new CAD();
+		News = this.oCAD.execQuery(News);
+		return News;
 	}
 }
