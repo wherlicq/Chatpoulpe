@@ -10,13 +10,14 @@ public class POI {
 	private String img;
 	private Trip[] trip;
 
-	public POI(Integer id, String label, String text, Double x, Double y)
+	public POI(Integer id, String label, String text, Double x, Double y, String img)
 	{
 		this.id = id;
 		this.label = label;
 		this.text = text;
 		this.x = x;
 		this.y = y;
+		this.img = img;
 	}
 	
 	public POI(Data.StcMsg oMsg)

@@ -28,7 +28,7 @@ public class Mpg_Image implements Mpg{
         
         id = (Integer)oMsg.data[0];
         
-        this.oMsg.rqSql = "SELECT * FROM `image` WHERE `IDImage` = ?";
+        this.oMsg.rqSql = "SELECT * FROM `image` WHERE `IDPoi` = ?";
         this.oMsg.data = new Object[1];
         this.oMsg.data[0] = id;
        
