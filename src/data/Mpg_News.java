@@ -39,6 +39,21 @@ public class Mpg_News implements Mpg {
        
         return this.oMsg;
     }
+    
+    public StcMsg getByNew(StcMsg oMsg) {
+        
+        Boolean news;
+        
+        this.oMsg = new StcMsg();
+        
+        news = (Boolean)oMsg.data[0];
+        
+        this.oMsg.rqSql = "SELECT * FROM `news` WHERE `NewNews` = ?";
+        this.oMsg.data = new Object[1];
+        this.oMsg.data[0] = news;
+       
+        return this.oMsg;
+    }
 
     @Override
     public StcMsg add(StcMsg oMsg) {
