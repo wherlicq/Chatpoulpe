@@ -198,7 +198,7 @@ public class Processus {
 			this.oCAD = new CAD();
 			Img = this.oCAD.execQuery(Img);
 			/*
-			Img.data = new Object[1];
+			POILink.data = new Object[1];
 			POILink.data[0] = POI.selectedData[i][0];
 			POILink = this.mpgPOILink.getById(POILink);
 			POILink = this.oCAD.execQuery(POILink);*/
@@ -207,25 +207,44 @@ public class Processus {
 		
 		this.loc = new Location((Integer)Loc.selectedData[0][0], (String)Loc.selectedData[0][1], (String)Loc.selectedData[0][2], POItab);
 		this.poi = POItab;
-/*
-		TripPOI.data = new Object[1];
-		TripPOI.data[0] = ;
-		this.oCAD = new CAD();
-		TripPOI = this.mpgTripPOI.getById(TripPOI);
-		TripPOI = this.oCAD.execQuery(TripPOI);
+
 		
-		nbTrip = (Integer)TripPOI.selectedData.length;
+		Trip.data = new Object[1];
+		Trip.data[0] = Loc.selectedData[0][0];
+		this.oCAD = new CAD();
+		Trip = this.mpgTrip.getById(Trip);
+		Trip = this.oCAD.execQuery(Trip);
+		nbTrip = Trip.selectedData.length;
+		POI[] tmpPOI = null;
+
 		Triptab = new Trip[nbTrip];
-		Trip.data = new Object[nbTrip];
-		for(int i = 0; i < nbTrip; i++)
+		for (int i = 0; i < nbTrip; i++)
 		{
-			Trip.data[0] = TripPOI.selectedData[i][1];
 			this.oCAD = new CAD();
-			Trip = this.mpgPOI.getById(POI);
-			Trip = this.oCAD.execQuery(POI);
-			Triptab[i] = new Trip((Integer)Trip.selectedData[0][0], (String)Trip.selectedData[0][1], this.loc, POItab);
+			TripPOI.data = new Object[1];
+			TripPOI.data[0] = Trip.selectedData[i][0];
+			TripPOI = this.mpgTripPOI.getById(TripPOI);
+			TripPOI = this.oCAD.execQuery(TripPOI);
+			tmpPOI = new POI[TripPOI.selectedData.length];
+			int k;
+			int indexPOI = 0;
+			for (int j = 0; j < tmpPOI.length; i++)
+			{
+				k = 0;
+				do
+				{
+					if (this.poi[k].getId() == (Integer)TripPOI.selectedData[j][1])
+					{
+						tmpPOI[indexPOI] = (POI)this.poi[k];
+						indexPOI++;
+					}
+					k++;
+				}while(this.poi[k].getId() != (Integer)TripPOI.selectedData[j][1] || k >= TripPOI.selectedData.length);
+				Triptab[i] = new Trip((Integer)Trip.selectedData[0][0], (String)Trip.selectedData[0][1], this.loc, tmpPOI);
+			}
 		}
-		*/
+		this.trip = Triptab;
+				
 		return oMsg;
 	}
 	

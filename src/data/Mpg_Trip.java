@@ -33,7 +33,7 @@ public class Mpg_Trip implements Mpg {
         
         id = (Integer)oMsg.data[0];
         
-        this.oMsg.rqSql = "SELECT * FROM `trip` WHERE `IDTrip` = ?";
+        this.oMsg.rqSql = "SELECT * FROM `trip` WHERE `IDLocation` = ?";
         this.oMsg.data = new Object[1];
         this.oMsg.data[0] = id;
        
