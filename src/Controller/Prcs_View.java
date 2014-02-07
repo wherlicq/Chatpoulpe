@@ -19,8 +19,11 @@ public class Prcs_View {
             this.oP = new Processus();
             //addLocation();
 //            updateLocation();
-            deleteLocation();
-//            initializeLocation();
+//            deleteLocation();
+            initializeLocation();
+           Location loc = this.oP.getLoc();
+           
+            
             
 	}
         
@@ -40,10 +43,10 @@ public class Prcs_View {
         {
             StcMsg oMsga = new StcMsg();
             oMsga.data = new Object[1];
-            oMsga.data[0] = 1;
+            oMsga.data[0] = 3;
             this.oMsg = new StcMsg();
             this.oP = new Processus();
-            this.oMsg = this.oP.loadLocation(oMsg);
+            this.oMsg = this.oP.loadLocation(oMsga);
             
             return this.oMsg;
         }
