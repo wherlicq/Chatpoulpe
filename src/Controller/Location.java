@@ -10,9 +10,41 @@ public class Location {
 	
 	public Location(Integer id, String label, String img, POI[] POItab)
 	{
+		this.setId(id);
+		this.setLabel(label);
+		this.setImg(img);
+		this.setPoi(POItab);
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
 		this.label = label;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
 		this.img = img;
-		this.poi = POItab;
+	}
+
+	public POI[] getPoi() {
+		return poi;
+	}
+
+	public void setPoi(POI[] poi) {
+		this.poi = poi;
 	}
 }
