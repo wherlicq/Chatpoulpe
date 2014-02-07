@@ -15,6 +15,7 @@ public class Processus {
 	private CAD oCAD;
 	private Location loc;
 	private Trip[] trip;
+	private POI[]poi;
 	private News[] news;
 	private History history;
 	private StcMsg oMsg;
@@ -160,15 +161,19 @@ public class Processus {
 		StcMsg Loc = oMsg;
 		StcMsg LocPOI = oMsg;
 		StcMsg POI = new StcMsg();
-		
-		this.oCAD = new CAD();
-		
+		StcMsg TripPOI = new StcMsg();
+		StcMsg Trip = new StcMsg();
+				
 		POI[] POItab;
+		Trip[] Triptab;
 		int nbPOI;
+		int nbTrip;
 		
-		
+
+		this.oCAD = new CAD();
 		Loc = this.mpgLocation.getById(Loc);
 		Loc = this.oCAD.execQuery(Loc);
+		
 		this.oCAD = new CAD();
 		LocPOI = this.mpgLocationPOI.getById(LocPOI);
 		LocPOI = this.oCAD.execQuery(LocPOI);
@@ -186,6 +191,24 @@ public class Processus {
 		}
 		
 		this.loc = new Location((Integer)Loc.selectedData[0][0], (String)Loc.selectedData[0][1], (String)Loc.selectedData[0][2], POItab);
+		this.poi = POItab;
+
+		
+		this.oCAD = new CAD();
+		TripPOI = this.mpgTripPOI.getById(TripPOI);
+		TripPOI = this.oCAD.execQuery(TripPOI);
+		
+		nbTrip = (Integer)TripPOI.selectedData.length;
+		Triptab = new Trip[nbTrip];
+		Trip.data = new Object[nbTrip];
+		for(int i = 0; i < nbTrip; i++)
+		{
+			Trip.data[0] = TripPOI.selectedData[i][1];
+			this.oCAD = new CAD();
+			Trip = this.mpgPOI.getById(POI);
+			Trip = this.oCAD.execQuery(POI);
+			Triptab[i] = new Trip((Integer)Trip.selectedData[0][0], (String)Trip.selectedData[0][1], POItab);
+		}
 		
 		return oMsg;
 	}
