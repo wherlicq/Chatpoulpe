@@ -14,8 +14,14 @@ public class Prcs_View {
 	
 	public void initialize() throws ClassNotFoundException, SQLException
 	{
-                home = new Home_Window(this);
-                home.setVisible(true);
+//                home = new Home_Window(this);
+//                home.setVisible(true);
+            this.oP = new Processus();
+            //addLocation();
+//            updateLocation();
+            deleteLocation();
+//            initializeLocation();
+            
 	}
         
         public StcMsg initializeNews() throws SQLException, ClassNotFoundException
@@ -30,9 +36,11 @@ public class Prcs_View {
             return this.oMsg;
         }
         
-        public StcMsg initializeLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        public StcMsg initializeLocation() throws ClassNotFoundException, SQLException
         {
             StcMsg oMsga = new StcMsg();
+            oMsga.data = new Object[1];
+            oMsga.data[0] = 1;
             this.oMsg = new StcMsg();
             this.oP = new Processus();
             this.oMsg = this.oP.loadLocation(oMsg);
@@ -40,22 +48,34 @@ public class Prcs_View {
             return this.oMsg;
         }
         
-        public void addLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        public void addLocation() throws ClassNotFoundException, SQLException
         {
+            StcMsg oMsga = new StcMsg();
+            oMsga.data = new Object[2];
+            oMsga.data[0] = "testlabel";
+            oMsga.data[1] = "testimage";
             this.oMsg = new StcMsg();
             this.oP = new Processus();
-            this.oMsg = this.oP.addLocation(oMsg);
+            this.oMsg = this.oP.addLocation(oMsga);
         }
         
-        public void updateLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        public void updateLocation() throws ClassNotFoundException, SQLException
         {
+            StcMsg oMsga = new StcMsg();
+            oMsga.data = new Object[3];
+            oMsga.data[0] = "test2label";
+            oMsga.data[1] = "test2image";
+            oMsga.data[2] = 3;
             this.oMsg = new StcMsg();
             this.oP = new Processus();
             this.oMsg = this.oP.updateLocation(oMsg);
         }
         
-        public void deleteLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
+        public void deleteLocation() throws ClassNotFoundException, SQLException
         {
+            StcMsg oMsga = new StcMsg();
+            oMsga.data = new Object[1];
+            oMsga.data[0] = 2;
             this.oMsg = new StcMsg();
             this.oP = new Processus();
             this.oMsg = this.oP.deleteLocation(oMsg);

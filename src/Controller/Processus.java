@@ -74,7 +74,7 @@ public class Processus {
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
 		
-		this.oMsg = this.loadLocation(oMsg);
+//		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	
@@ -117,7 +117,7 @@ public class Processus {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.oMsg = this.loadLocation(oMsg);
+//		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	public StcMsg updateLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
@@ -130,7 +130,7 @@ public class Processus {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.oMsg = this.loadLocation(oMsg);
+//		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
 	}
 	public StcMsg deleteLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
