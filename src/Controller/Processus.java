@@ -231,7 +231,7 @@ public class Processus {
 	
 	public StcMsg loadNews(StcMsg oMsg) throws SQLException, ClassNotFoundException
 	{
-		StcMsg News = new StcMsg(); 
+		StcMsg News = oMsg; 
 		News = this.mpgNews.getByNew(News);
 		this.oCAD = new CAD();
 		News = this.oCAD.execQuery(News);
