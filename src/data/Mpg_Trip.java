@@ -45,17 +45,20 @@ public class Mpg_Trip implements Mpg {
         
         String label;
         String text;
+        Integer loc;
         
         this.oMsg = new StcMsg();
         
         label = (String)oMsg.data[0];
         text = (String)oMsg.data[1];
+        loc = (Integer)oMsg.data[2];
         
         
-        this.oMsg.rqSql = "INSERT INTO `trip`(`LabelTrip`, `TextTrip`) VALUES (?,?)";
-        this.oMsg.data = new Object[2];
+        this.oMsg.rqSql = "INSERT INTO `trip`(`LabelTrip`, `TextTrip`, `IDLocation) VALUES (?,?,?)";
+        this.oMsg.data = new Object[3];
         this.oMsg.data[0] = label;
         this.oMsg.data[1] = text;
+        this.oMsg.data[2] = loc;
 
         return this.oMsg;
     }
