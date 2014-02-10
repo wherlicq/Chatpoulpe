@@ -60,17 +60,23 @@ public class Mpg_News implements Mpg {
         
         String label;
         String text;
+        Integer idItem;
+        String TypeItem;
         
         this.oMsg = new StcMsg();
         
         label = (String)oMsg.data[0];
         text = (String)oMsg.data[1];
+        idItem = (Integer)oMsg.data[2];
+        TypeItem = (String)oMsg.data[3];
         
         
-        this.oMsg.rqSql = "INSERT INTO `news`(`LabelNews`, `TextNews`) VALUES (?,?)";
+        this.oMsg.rqSql = "INSERT INTO `news`(`LabelNews`, `TextNews`, `IDItemAdded`, `TypeItemAdded`) VALUES (?,?,?,?)";
         this.oMsg.data = new Object[2];
         this.oMsg.data[0] = label;
         this.oMsg.data[1] = text;
+        this.oMsg.data[2] = idItem;
+        this.oMsg.data[3] = TypeItem;
 
         return this.oMsg;
     }

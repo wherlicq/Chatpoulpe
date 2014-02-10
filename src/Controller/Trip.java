@@ -15,6 +15,10 @@ public class Trip {
 		this.setLoc(loc);
 	}
 
+	public Trip() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getId() {
 		return id;
 	}

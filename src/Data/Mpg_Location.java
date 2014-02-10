@@ -98,4 +98,47 @@ public class Mpg_Location implements Mpg {
         return this.oMsg;
     }
     
+    public StcMsg getByLabel(StcMsg oMsg)
+    {
+        String label;
+        
+        this.oMsg = new StcMsg();
+        
+        label = (String)oMsg.data[1];
+        
+        this.oMsg.rqSql = "DELETE FROM `location` WHERE `LabelLocation` = ?";
+        this.oMsg.data = new Object[1];
+        this.oMsg.data[0] = label;
+        
+        return this.oMsg;    	
+    }
+    
+    public StcMsg getByPartOfLabel(StcMsg oMsg)
+    {
+        String label;
+        
+        this.oMsg = new StcMsg();
+        
+        label = (String)oMsg.data[1];
+        
+        this.oMsg.rqSql = "DELETE FROM `location` WHERE `LabelLocation` = *" + label + "*";
+        this.oMsg.data = new Object[1];
+        this.oMsg.data[0] = label;
+        
+        return this.oMsg;
+    }
+    
+    public StcMsg getByPartOfText(StcMsg oMsg)
+    {
+        String text;
+        
+        this.oMsg = new StcMsg();
+        
+        text = (String)oMsg.data[1];
+        
+        this.oMsg.rqSql = "DELETE FROM `location` WHERE `Text` = *" + text + "*";
+        this.oMsg.data = new Object[1];
+        this.oMsg.data[0] = text;
+        return this.oMsg;
+    }    
 }

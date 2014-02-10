@@ -52,7 +52,24 @@ public class Processus {
 		this.oMsg = this.mpgPOI.add(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
-		this.oMsg = this.loadLocation(oMsg);
+
+		this.oMsg = this.mpgPOI.getAll(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		this.oMsg.data[0] = this.oMsg.selectedData[this.oMsg.selectedData.length - 1][0];
+		this.oMsg = this.mpgPOI.getById(this.oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
+		this.oMsg.data[0] = "Nouveau POI";
+		this.oMsg.data[1] = "Un nouveau POI a été ajouté !";
+        this.oMsg.data[2] = this.oMsg.data[0];
+        this.oMsg.data[3] = "POI";
+        
+		this.oMsg = this.mpgNews.add(this.oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
 		return oMsg;
 	}
 	public StcMsg updatePOI(StcMsg oMsg) throws ClassNotFoundException, SQLException
@@ -63,7 +80,6 @@ public class Processus {
 		this.oMsg = this.loadLocation(oMsg);
 		return this.oMsg;
 	}
-	
 	public StcMsg deletePOI(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgPOI.deleteById(oMsg);
@@ -73,6 +89,7 @@ public class Processus {
 		this.mpgTripPOI.deleteById(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
 		
 //		this.oMsg = this.loadLocation(oMsg);
 		return oMsg;
@@ -84,7 +101,20 @@ public class Processus {
 		this.oMsg = this.mpgTrip.add(oMsg);
 		this.oCAD = new CAD();
 		this.oMsg = this.oCAD.execQuery(this.oMsg);
-		this.oMsg = this.loadLocation(oMsg);
+
+		this.oMsg = this.mpgTrip.getAll(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
+		this.oMsg.data[0] = "Nouveau Parcour";
+		this.oMsg.data[1] = "Un nouveau parcour a été ajouté !";
+        this.oMsg.data[2] = this.oMsg.selectedData[this.oMsg.selectedData.length - 1][0];
+        this.oMsg.data[3] = "Trip";
+        
+		this.oMsg = this.mpgNews.add(this.oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+
 		return oMsg;
 	}
 	public StcMsg updateTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
@@ -97,12 +127,23 @@ public class Processus {
 	}
 	public StcMsg deleteTrip(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
-		this.oMsg = this.mpgTrip.deleteById(oMsg);
+		StcMsg Trip = new StcMsg();
+		Trip = this.mpgTrip.deleteById(oMsg);
 		this.oCAD = new CAD();
-		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		Trip = this.oCAD.execQuery(Trip);
 		
-		this.oMsg = this.loadLocation(oMsg);
-
+		StcMsg TripPOI = new StcMsg();
+		TripPOI = this.mpgTripPOI.getById(oMsg);
+		this.oCAD = new CAD();
+		TripPOI = this.oCAD.execQuery(TripPOI);
+		for (int i = 0; i < TripPOI.selectedData.length; i++)
+		{
+			TripPOI = this.mpgTripPOI.deleteById(oMsg);
+			this.oCAD = new CAD();
+			TripPOI = this.oCAD.execQuery(TripPOI);
+		}
+		
+		
 		return oMsg;
 	}
 	
@@ -110,14 +151,22 @@ public class Processus {
 	public StcMsg addLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
 		this.oMsg = this.mpgLocation.add(oMsg);
-		try {
-			this.oCAD = new CAD();
-			this.oMsg = this.oCAD.execQuery(this.oMsg);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		this.oMsg = this.loadLocation(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+
+		this.oMsg = this.mpgLocation.getAll(oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
+		this.oMsg.data[0] = "Nouveau Lieux";
+		this.oMsg.data[1] = "Un nouveau lieux a été ajouté !";
+        this.oMsg.data[2] = this.oMsg.selectedData[this.oMsg.selectedData.length - 1][0];
+        this.oMsg.data[3] = "Location";
+        
+		this.oMsg = this.mpgNews.add(this.oMsg);
+		this.oCAD = new CAD();
+		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		
 		return oMsg;
 	}
 	public StcMsg updateLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
@@ -135,22 +184,32 @@ public class Processus {
 	}
 	public StcMsg deleteLocation(StcMsg oMsg) throws ClassNotFoundException, SQLException
 	{
-		this.oMsg = this.mpgLocation.deleteById(oMsg);
+		StcMsg Loc = new StcMsg();
+		
+		Loc = this.mpgLocation.deleteById(oMsg);
 		this.oCAD = new CAD();
-		this.oMsg = this.oCAD.execQuery(this.oMsg);
+		Loc = this.oCAD.execQuery(Loc);
 
-		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
-		for (int i = 0; i < this.oMsg.selectedData.length; i++)
+		StcMsg LocPOI = new StcMsg();
+
+		LocPOI = this.mpgLocationPOI.getByIdLocation(oMsg);
+		this.oCAD = new CAD();
+		LocPOI = this.oCAD.execQuery(LocPOI);
+		for (int i = 0; i < LocPOI.selectedData.length; i++)
 		{
-			this.oMsg.data[0] = this.oMsg.selectedData[i][0];
-			this.deletePOI(this.oMsg);
+			LocPOI.data[0] = LocPOI.selectedData[i][0];
+			this.deletePOI(LocPOI);
 		}
 
-		this.oMsg = this.mpgLocationPOI.getByIdLocation(oMsg);
-		for (int i = 0; i < this.oMsg.selectedData.length; i++)
+		StcMsg Trip = new StcMsg();
+
+		Trip = this.mpgTrip.getById(oMsg);
+		this.oCAD = new CAD();
+		Trip = this.oCAD.execQuery(Trip);
+		for (int i = 0; i < Trip.selectedData.length; i++)
 		{
-			this.oMsg.data[0] = this.oMsg.selectedData[i][0];
-			this.deletePOI(this.oMsg);
+			Trip.data[0] = Trip.selectedData[i][0];
+			this.deleteTrip(Trip);
 		}
 		
 		return oMsg;
@@ -185,16 +244,16 @@ public class Processus {
 		
 		nbPOI = (Integer)LocPOI.selectedData.length;
 		POItab = new POI[nbPOI];
-		POI.data = new Object[nbPOI];
 		for(int i = 0; i < nbPOI; i++)
 		{
+			POI.data = new Object[1];
 			POI.data[0] = LocPOI.selectedData[i][1];
 			this.oCAD = new CAD();
 			POI = this.mpgPOI.getById(POI);
 			POI = this.oCAD.execQuery(POI);
 			Img = new StcMsg();
 			Img.data = new Object[1];
-			Img.data[0] = POI.selectedData[i][0];
+			Img.data[0] = POI.selectedData[0][0];
 			Img = this.mpgImage.getById(Img);
 			this.oCAD = new CAD();
 			Img = this.oCAD.execQuery(Img);
@@ -227,22 +286,19 @@ public class Processus {
 			TripPOI = this.mpgTripPOI.getById(TripPOI);
 			TripPOI = this.oCAD.execQuery(TripPOI);
 			tmpPOI = new POI[TripPOI.selectedData.length];
-			int k;
-			int indexPOI = 0;
-			for (int j = 0; j < tmpPOI.length; i++)
+			for (int j = 0; j < TripPOI.selectedData.length; j++)
 			{
-				k = 0;
-				do
+				int indexPOI = 0;
+				for (int k = 0; k < this.poi.length; k++)
 				{
 					if (this.poi[k].getId() == (Integer)TripPOI.selectedData[j][1])
 					{
 						tmpPOI[indexPOI] = (POI)this.poi[k];
 						indexPOI++;
 					}
-					k++;
-				}while(this.poi[k].getId() != (Integer)TripPOI.selectedData[j][1] || k >= TripPOI.selectedData.length);
-				Triptab[i] = new Trip((Integer)Trip.selectedData[0][0], (String)Trip.selectedData[0][1], this.loc, tmpPOI);
+				}
 			}
+			Triptab[i] = new Trip((Integer)Trip.selectedData[0][0], (String)Trip.selectedData[0][1], this.loc, tmpPOI);
 		}
 		this.setTrip(Triptab);
 				
@@ -257,7 +313,63 @@ public class Processus {
 		News = this.oCAD.execQuery(News);
 		return News;
 	}
+	
+	public Integer getPOIsLocation(Integer idPOI) throws ClassNotFoundException, SQLException
+	{
+		Integer idLoc;
+		StcMsg MsgPoi = new StcMsg();
+		MsgPoi.data = new Object[1];
+		MsgPoi.data[0] = idPOI;
+		MsgPoi = this.mpgLocationPOI.getByIdPoi(MsgPoi);
+		this.oCAD = new CAD();
+		this.oCAD.execQuery(MsgPoi);
+		idLoc = (Integer)MsgPoi.selectedData[0][0];
+		return idLoc;
+	}
 
+	public Integer getTripsLocation(Integer idPOI) throws ClassNotFoundException, SQLException
+	{
+		this.oCAD = new CAD();
+		Integer idLoc = 0;
+		StcMsg MsgTrip = new StcMsg();
+		MsgTrip.data = new Object[1];
+		MsgTrip.data[0] = idPOI;
+		MsgTrip = this.mpgTrip.getById(MsgTrip);
+		this.oCAD.execQuery(MsgTrip);
+		idLoc = (Integer)MsgTrip.selectedData[0][0];
+		return idLoc;
+	}
+
+	public StcMsg search(StcMsg oMsg)
+	{
+		// data[0] = type
+		// data[1] = text value
+		
+		this.oMsg = oMsg;
+		
+		switch((String)oMsg.data[0])
+		{
+		case "Nom exact":
+			this.oMsg = this.mpgLocation.getByLabel(this.oMsg);
+			break;
+			
+		case "Partie de nom":
+			this.oMsg = this.mpgLocation.getByPartOfLabel(this.oMsg);
+			break;
+			
+		case "Mot de la description":
+			this.oMsg = this.mpgLocation.getByPartOfText(this.oMsg);
+			break;
+		}
+		
+		return this.oMsg;
+	}
+	
+	public StcMsg searchByIdPOI(Integer idPOI)
+	{
+		return this.oMsg;
+	}
+	
 	public Trip[] getTrip() {
 		return trip;
 	}
